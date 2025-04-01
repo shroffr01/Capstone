@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2025-03-22 14:23:27 by Eclipse SUMO sumo Version 1.20.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="/Users/jackkenzakowski/Desktop/Capstone/sumo-marl/scenario/rohan_map/osm.net.xml"/>
+        <route-files value="/Users/jackkenzakowski/Desktop/Capstone/sumo-marl/scenario/rohan_map/osm.passenger.trips.xml"/>
+    </input>
+
+    <output>
+        <tripinfo-output value="/Users/jackkenzakowski/Desktop/Capstone/sumo-marl/scenario/rohan_map/sample.tripinfo.xml"/>
+    </output>
+
+    <report>
+        <no-warnings value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+    <traci_server>
+        <remote-port value="57852"/>
+    </traci_server>
+
+</configuration>
+-->
+
+<tripinfos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/tripinfo_file.xsd">
+</tripinfos>

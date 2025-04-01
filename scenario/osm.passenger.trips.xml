@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2025-03-01 16:19:57.435865 by osmWebWizard.py v1_21_0+0000-d7b3b481c43
+<configuration>
+    <net-file value="C:\Users\shrof\Sumo\2025-03-01-16-19-53\osm.net.xml.gz"/>
+    <output-trip-file value="C:\Users\shrof\Sumo\2025-03-01-16-19-53\osm.passenger.trips.xml"/>
+    <route-file value="C:\Users\shrof\Sumo\2025-03-01-16-19-53\osm.passenger.rou.xml"/>
+    <prefix value="veh"/>
+    <trip-attributes value="departLane=&quot;best&quot;"/>
+    <fringe-start-attributes value="departSpeed=&quot;max&quot;"/>
+    <vehicle-class value="passenger"/>
+    <lanes value="True"/>
+    <fringe-factor value="5"/>
+    <allow-fringe.min-length value="1000.0"/>
+    <via-edge-types value="highway.motorway,highway.motorway_link,highway.trunk_link,highway.primary_link,highway.secondary_link,highway.tertiary_link"/>
+    <min-distance value="300.0"/>
+    <min-distance.fringe value="10.0"/>
+    <remove-loops value="True"/>
+    <validate value="True"/>
+    <insertion-density value="12.0"/>
+</configuration>
+-->
+
+<!-- generated on 2025-03-01 16:19:57 by Eclipse SUMO duarouter Version 1.21.0
+<duarouterConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
+
+    <input>
+        <net-file value="C:\Users\shrof\Sumo\2025-03-01-16-19-53\osm.net.xml.gz"/>
+        <route-files value="C:\Users\shrof\Sumo\2025-03-01-16-19-53\osm.passenger.trips.xml"/>
+    </input>
+
+    <output>
+        <output-file value="C:\Users\shrof\Sumo\2025-03-01-16-19-53\osm.passenger.trips.xml.tmp"/>
+        <alternatives-output value="NUL"/>
+        <write-trips value="true"/>
+    </output>
+
+    <processing>
+        <remove-loops value="true"/>
+    </processing>
+
+    <time>
+        <begin value="0.0"/>
+        <end value="3600.0"/>
+    </time>
+
+    <report>
+        <no-warnings value="true"/>
+        <ignore-errors value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+</duarouterConfiguration>
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <vType id="veh_passenger" vClass="passenger"/>
+    
+    <!-- Original 10 trips -->
+    <trip id="veh0"  type="veh_passenger" depart="0.00"  departLane="best" departSpeed="max" from="-51318727"     to="51318727"     via="837254001"/>
+    <trip id="veh1"  type="veh_passenger" depart="6.57"  departLane="best" departSpeed="max" from="789034006"     to="51318727"     via="-1062636129"/>
+    <trip id="veh2"  type="veh_passenger" depart="13.15" departLane="best" departSpeed="max" from="-20609787#1"   to="51318727"     via="837254001"/>
+    <trip id="veh3"  type="veh_passenger" depart="19.72" departLane="best" departSpeed="max" from="789034006"     to="51318727"     via="837254001"/>
+    <trip id="veh4"  type="veh_passenger" depart="26.29" departLane="best" departSpeed="max" from="20612800"      to="-1062636129"  via="-1062636129"/>
+    <trip id="veh5"  type="veh_passenger" depart="32.87" departLane="best" departSpeed="max" from="-20609787#1"   to="51318727"     via="20612408"/>
+    <trip id="veh6"  type="veh_passenger" depart="33.00" departLane="best" departSpeed="max" from="789034006"     to="51318727"     via="-1062636129"/>
+    <trip id="veh7"  type="veh_passenger" depart="34.00" departLane="best"                     from="20612408"     to="51318727"     via="837254001"/>
+    <trip id="veh8"  type="veh_passenger" depart="35.00" departLane="best"                     from="837254001"    to="51318727"     via="837254001"/>
+    <trip id="veh9"  type="veh_passenger" depart="36.00" departLane="best" departSpeed="max" from="20612800"      to="51318727"     via="-1062636129"/>
+
+    <!-- 30 more vehicles with staggered departure times and mixed origins/vias -->
+    <!-- Mix and match available edges and routes -->
+    <!-- Departures: ~every 5 seconds starting from 40 -->
+    <!-- Edges used: 789034006, -51318727, 20612800, 20612408, -20609787#1, 837254001 -->
+
+    <!-- From 40 to 185 seconds -->
+    <trip id="veh10"  type="veh_passenger" depart="40"   from="789034006"     to="51318727"     via="837254001"/>
+    <trip id="veh11"  type="veh_passenger" depart="45"   from="20612408"      to="51318727"     via="-1062636129"/>
+    <trip id="veh12"  type="veh_passenger" depart="50"   from="837254001"     to="51318727"     via="837254001"/>
+    <trip id="veh13"  type="veh_passenger" depart="55"   from="-20609787#1"   to="51318727"     via="20612408"/>
+    <trip id="veh14"  type="veh_passenger" depart="60"   from="20612800"      to="51318727"     via="-1062636129"/>
+    <trip id="veh15"  type="veh_passenger" depart="65"   from="-51318727"     to="51318727"     via="837254001"/>
+    <trip id="veh16"  type="veh_passenger" depart="70"   from="20612408"      to="51318727"     via="837254001"/>
+    <trip id="veh17"  type="veh_passenger" depart="75"   from="789034006"     to="51318727"     via="837254001"/>
+    <trip id="veh18"  type="veh_passenger" depart="80"   from="837254001"     to="51318727"     via="837254001"/>
+    <trip id="veh19"  type="veh_passenger" depart="85"   from="20612800"      to="51318727"     via="-1062636129"/>
+    <trip id="veh20"  type="veh_passenger" depart="90"   from="-20609787#1"   to="51318727"     via="20612408"/>
+    <trip id="veh21"  type="veh_passenger" depart="95"   from="789034006"     to="51318727"     via="837254001"/>
+    <trip id="veh22"  type="veh_passenger" depart="100"  from="20612408"      to="51318727"     via="-1062636129"/>
+    <trip id="veh23"  type="veh_passenger" depart="105"  from="837254001"     to="51318727"     via="837254001"/>
+    <trip id="veh24"  type="veh_passenger" depart="110"  from="20612800"      to="51318727"     via="-1062636129"/>
+    <trip id="veh25"  type="veh_passenger" depart="115"  from="789034006"     to="51318727"     via="-1062636129"/>
+    <trip id="veh26"  type="veh_passenger" depart="120"  from="20612408"      to="51318727"     via="837254001"/>
+    <trip id="veh27"  type="veh_passenger" depart="125"  from="837254001"     to="51318727"     via="837254001"/>
+    <trip id="veh28"  type="veh_passenger" depart="130"  from="-20609787#1"   to="51318727"     via="20612408"/>
+    <trip id="veh29"  type="veh_passenger" depart="135"  from="20612800"      to="51318727"     via="-1062636129"/>
+    <trip id="veh30"  type="veh_passenger" depart="140"  from="789034006"     to="51318727"     via="837254001"/>
+    <trip id="veh31"  type="veh_passenger" depart="145"  from="20612408"      to="51318727"     via="837254001"/>
+    <trip id="veh32"  type="veh_passenger" depart="150"  from="837254001"     to="51318727"     via="837254001"/>
+    <trip id="veh33"  type="veh_passenger" depart="155"  from="-51318727"     to="51318727"     via="837254001"/>
+    <trip id="veh34"  type="veh_passenger" depart="160"  from="20612408"      to="51318727"     via="-1062636129"/>
+    <trip id="veh35"  type="veh_passenger" depart="165"  from="20612800"      to="51318727"     via="837254001"/>
+    <trip id="veh36"  type="veh_passenger" depart="170"  from="789034006"     to="51318727"     via="-1062636129"/>
+    <trip id="veh37"  type="veh_passenger" depart="175"  from="837254001"     to="51318727"     via="837254001"/>
+    <trip id="veh38"  type="veh_passenger" depart="180"  from="-20609787#1"   to="51318727"     via="20612408"/>
+    <trip id="veh39"  type="veh_passenger" depart="185"  from="20612408"      to="51318727"     via="-1062636129"/>
+
+</routes>
+
