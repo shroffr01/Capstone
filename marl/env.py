@@ -1,16 +1,15 @@
+import os
 import traci
 from sumolib import checkBinary
 import numpy as np
 import pandas as pd
 
 class TrafficEnv:
-    def __init__(self, mode='binary'):
+    def __init__(self, sumo_cfg_path, gui=False):
         # If the mode is 'gui', it renders the scenario.
-        if mode == 'gui':
-            self.sumoBinary = checkBinary('sumo-gui')
-        else:
-            self.sumoBinary = checkBinary('sumo')
-        self.sumoCmd = [self.sumoBinary, "-c", 'C:/Users/shrof/.vscode/UVACODE/RLTC_repo_Staunton/sumo-marl/scenario/osm.sumocfg', '--no-step-log', '-W']
+        bin_name = 'sumo-gui' if gui else 'sumo'
+        self.sumoBinary = checkBinary(bin_name)
+        self.sumoCmd = [self.sumoBinary, "-c", sumo_cfg_path, '--no-step-log', '-W']
         
         self.time = None
         self.decision_time = 10
@@ -132,5 +131,8 @@ class TrafficEnv:
 
 
 if __name__ == "__main__":
+    import sys
+    cfg = sys.argv[1] if len(sys.argv) > 1 else "scenario/osm.sumocfg"
     env = TrafficEnv()
     state = env.reset()
+    env.close()

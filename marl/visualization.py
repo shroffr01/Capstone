@@ -1,9 +1,9 @@
 import os
 import sys
 
-from env import TrafficEnv
-from maddpg import MADDPG
-from utils import get_average_travel_time
+from marl.env import TrafficEnv
+from marl.maddpg import MADDPG
+from marl.utils import get_average_travel_time
 
 if __name__ == "__main__":
 
