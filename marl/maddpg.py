@@ -84,7 +84,8 @@ class ReplayMemory:
 
 
 class MADDPG(nn.Module):
-    def __init__(self, n_agents, obs_dim, action_dim, lr=1e-3, gamma=0.99, batch_size=64, tau=1e-3):
+
+    def __init__(self, n_agents, obs_dim, action_dim, lr=5e-4, gamma=0.97, batch_size=128, tau=5e-3):
         super(MADDPG, self).__init__()
 
         self.n_agents = n_agents
@@ -102,11 +103,11 @@ class MADDPG(nn.Module):
         self.mse_loss = nn.MSELoss()
         self.init_optimizers()
 
-        self.memory = ReplayMemory(capacity=5000)
+        self.memory = ReplayMemory(capacity=50000)
 
         self.eps = 0.9
-        self.eps_decay = 0.99
-        self.eps_threshold = 0.01
+        self.eps_decay = 0.995
+        self.eps_threshold = 0.05
         self.eps_update_step = 100
         self.step = 0
 

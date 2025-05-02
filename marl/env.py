@@ -1,15 +1,21 @@
-import os
 import traci
 from sumolib import checkBinary
+import os
 import numpy as np
 import pandas as pd
+import warnings
+import traci.constants as tc
 
 class TrafficEnv:
-    def __init__(self, sumo_cfg_path, gui=False):
+    def __init__(self, mode='binary'):
         # If the mode is 'gui', it renders the scenario.
-        bin_name = 'sumo-gui' if gui else 'sumo'
-        self.sumoBinary = checkBinary(bin_name)
-        self.sumoCmd = [self.sumoBinary, "-c", sumo_cfg_path, '--no-step-log', '-W']
+        if mode == 'gui':
+            self.sumoBinary = checkBinary('sumo-gui')
+        else:
+            self.sumoBinary = checkBinary('sumo')
+        # point at the scenario folder one level up from src/
+        cfg = os.path.join(os.path.dirname(__file__), '..', 'scenario', 'osm.sumocfg')
+        self.sumoCmd = [self.sumoBinary, "-c", cfg, '--no-step-log', '--no-warnings']
         
         self.time = None
         self.decision_time = 10
@@ -22,6 +28,11 @@ class TrafficEnv:
         self.intersection_phases = {}
 
     def reset(self):
+        # if a previous traci connection is still open, close it first
+        try:
+            traci.close()
+        except Exception:
+            pass
         traci.start(self.sumoCmd)
         self.n_intersections = len(traci.trafficlight.getIDList()) ### ADDED ###
         traci.simulationStep()
@@ -77,7 +88,7 @@ class TrafficEnv:
             
             signal_time_sofar = traci.trafficlight.getSpentDuration(intersection_ID)
 
-            if actions[i] == current_action or signal_time_sofar <= 6:
+            if actions[i] == current_action:
                 # ensures phase is not changed prematurely (ie. 2 second yellow light)
 
                 signal_timings = 0
@@ -89,6 +100,7 @@ class TrafficEnv:
                 continue
             else:
                 signal_timings = traci.trafficlight.getSpentDuration(intersection_ID)
+                
                 phase = traci.trafficlight.getPhase(intersection_ID)
 
                 traci.trafficlight.setPhase(intersection_ID, actions[i])  
@@ -128,11 +140,7 @@ class TrafficEnv:
     def close(self):
         traci.close()
 
-
-
+                    
 if __name__ == "__main__":
-    import sys
-    cfg = sys.argv[1] if len(sys.argv) > 1 else "scenario/osm.sumocfg"
     env = TrafficEnv()
     state = env.reset()
-    env.close()
